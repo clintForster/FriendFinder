@@ -214,8 +214,8 @@
             }
 
             // I went through all of our past activities, which did help a lot, but nothing I found could help me with this problem.
-            // I dont know why but when I console.log() userResult it gives me the correct number of scores and there given values.
-            // However, when I $.post the userResults array 
+            // I dont know why but when I console.log() userResult it gives me the correct number of scores and there given values,
+            // however, when I $.post the userResults array to the back-end as "req.body", they are logged as undefined.
 
             $.post("/api/friends", {userResults: userResults}, function (data) {
                 console.log(data);
