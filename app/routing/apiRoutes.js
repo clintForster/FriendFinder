@@ -1,13 +1,32 @@
-// A GET route with the url `/api/friends`. This will be used to display a JSON of all possible friends.
 
-app.get("/api/friends", function (req, res) {
+var friends = require("../data/friends");
+
+module.exports = function (app) {
 
 
-});
+    app.get("/api/friends", function (req, res) {
+        res.json(friends);
+    });
 
-post.get("/api/friends", function (req, res) {
+    app.post("/api/friends", function (req, res) {
+        let userScores = req.body; //answers from user
+        let minDif = 9999999;
+        let matchedFriend;
+        for (let i = 0; i < friends.length; i++) {
+            let totDif = 0;
+            for (let j = 0; j < friends[i].scores.length; j++) {
+                totDif += Math.abs(friends[i].scores[j] - userScores[j]);
+            }
+            if (totDif <= minDif) {
+                matchedFriend = friends[i];
+            }
+        }
 
-    for (var i = 0; i < ) {
+        console.log(matchedFriend);
+        res.json(matchedFriend);
 
-    }
-});
+
+
+    });
+
+}

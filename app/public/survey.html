@@ -19,9 +19,6 @@
             <div class="col-md-12">
                 <div class="jumbotron">
                     <h1>Friend Finder</h1>
-                    <button type="button" class="btn btn-primary">Home</button>
-                    <button type="button" class="btn btn-primary">Survey</button>
-                    <!-- <button type="button" class="btn btn-primary"></button> -->
                 </div>
             </div>
         </div>
@@ -194,16 +191,21 @@
         </div>
     </div>
 
+
+    <!-- I DO NOT UNDERSTAND WHAT IS HAPPENING AT THE POST -->
+    <!-- ||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
     <script type="text/javascript">
-        // Question: What does this code do?
-        $("#submit").on("click", function (event) {
+        $("#submit").on("click", function () {
             event.preventDefault();
 
+
             var userResults = [];
-            // |||||||||||||||||||||||||||||||||
-            // ask about what is happening here.
-            // |||||||||||||||||||||||||||||||||
+
+
+
             for (var i = 0; i != 10; i++) {
+
                 if ($('input[name=Q' + i + ']:checked').val() === undefined) {
                     userResults.push(0);
                 } else {
@@ -211,12 +213,15 @@
                 }
             }
 
+            // I went through all of our past activities, which did help a lot, but nothing I found could help me with this problem.
+            // I dont know why but when I console.log() userResult it gives me the correct number of scores and there given values.
+            // However, when I $.post the userResults array 
 
-            // Question: What does this code do??
-            $.post("/api/friends", userResults)
-                .then(function (data) {
-                    console.log(data);
-                });
+            $.post("/api/friends", {userResults: userResults}, function (data) {
+                console.log(data);
+            });
+
+
         });
     </script>
 
